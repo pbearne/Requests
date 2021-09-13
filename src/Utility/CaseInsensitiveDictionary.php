@@ -47,7 +47,10 @@ class CaseInsensitiveDictionary implements ArrayAccess, IteratorAggregate {
 	 */
 	#[ReturnTypeWillChange]
 	public function offsetExists($key) {
-		$key = strtolower($key);
+		if (is_string($key)) {
+			$key = strtolower($key);
+		}
+
 		return isset($this->data[$key]);
 	}
 
@@ -59,7 +62,10 @@ class CaseInsensitiveDictionary implements ArrayAccess, IteratorAggregate {
 	 */
 	#[ReturnTypeWillChange]
 	public function offsetGet($key) {
-		$key = strtolower($key);
+		if (is_string($key)) {
+			$key = strtolower($key);
+		}
+
 		if (!isset($this->data[$key])) {
 			return null;
 		}
@@ -81,7 +87,10 @@ class CaseInsensitiveDictionary implements ArrayAccess, IteratorAggregate {
 			throw new Exception('Object is a dictionary, not a list', 'invalidset');
 		}
 
-		$key              = strtolower($key);
+		if (is_string($key)) {
+			$key = strtolower($key);
+		}
+
 		$this->data[$key] = $value;
 	}
 
@@ -92,7 +101,11 @@ class CaseInsensitiveDictionary implements ArrayAccess, IteratorAggregate {
 	 */
 	#[ReturnTypeWillChange]
 	public function offsetUnset($key) {
-		unset($this->data[strtolower($key)]);
+		if (is_string($key)) {
+			$key = strtolower($key);
+		}
+
+		unset($this->data[$key]);
 	}
 
 	/**
