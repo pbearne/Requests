@@ -7,10 +7,15 @@ PR for tracking changes for the x.x.x release.
 
 Target release date: **DOW MONTH DAY YEAR**.
 
+Actions marked with ** only need to be executre for "cherrypick" releases (`develop` is the next minor/major and not ready for release).
+
 - [ ] Check if any dependencies need updating.
+- [ ] ** Create a `release-x.x.x` branch.
+- [ ] ** Cherrypick any relevant commits from `develop` to the release branch, including commits related to CI updates.
 - [ ] Update the version constant in `src/Requests.php` - PR #xxx.
 - [ ] Add changelog for the release - PR #xxx
-- [ ] Merge this PR.
+    ** In case of a short-lived release branch, add the changelog as the last commit to the release branch and pull the release branch.
+- [ ] Merge the changelog/release PR.
 - [ ] Make sure all CI builds are green.
 - [ ] Tag the release against `stable` and push the tag.
 - [ ] Review the automatically created PR with the GH Pages docs update.
