@@ -328,7 +328,7 @@ class Cookie {
 					return null;
 				}
 
-				$expiry_time = ( new \DateTimeImmutable( $value ) )->getTimestamp();
+				$expiry_time = (new \DateTimeImmutable($value))->getTimestamp();
 				if ($expiry_time === false) {
 					return null;
 				}
